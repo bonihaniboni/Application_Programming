@@ -206,7 +206,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             post.put("color", selectedNoteColor);
             post.put("image", selectedImagePath);
 
-   /*         mStore.collection("note").add(post)
+         /*  mStore.collection("note").add(post)
                     .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                         @Override
                         public void onSuccess(DocumentReference documentReference) {
@@ -219,30 +219,31 @@ public class CreateNoteActivity extends AppCompatActivity {
                             Toast.makeText(CreateNoteActivity.this,"Firebase Fail", Toast.LENGTH_SHORT).show();
                         }
                     });
+
 */
+            // 파이어베이스 이미지 업로드ㅡ
+            if(selectedImageUri != null) {
+                FirebaseStorage storage = FirebaseStorage.getInstance(); // 스토리지 인스턴스 만들고
+                StorageReference storageRef = storage.getReference(); // 스토리지 참조
+                // 파일명 만들기
+                String filename = "test1.jpg";
+                Uri file_fimg = selectedImageUri;
+                Log.d("유알", String.valueOf(file_fimg));
+                StorageReference riversRef = storageRef.child("test_image/" + filename);
+                UploadTask uploadTask = riversRef.putFile(file_fimg);
+                // 새로운 이미지 저장
+                uploadTask.addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
 
-            // 파이어베이스 이미지 업로드
-            FirebaseStorage storage = FirebaseStorage.getInstance(); // 스토리지 인스턴스 만들고
-            StorageReference storageRef = storage.getReference(); // 스토리지 참조
-            // 파일명 만들기
-            String filename = "test1.jpg";
-            Uri file_fimg = selectedImageUri;
-            Log.d("유알",String.valueOf(file_fimg));
-            StorageReference riversRef = storageRef.child("test_image/"+ filename);
-            UploadTask uploadTask = riversRef.putFile(file_fimg);
-            // 새로운 이미지 저장
-            uploadTask.addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-
-                }
-            }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(getApplicationContext(),"이미지 업로드",Toast.LENGTH_SHORT).show();
-                }
-            });
-
+                    }
+                }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Toast.makeText(getApplicationContext(), "이미지 업로드", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
             @SuppressLint("StaticFieldLeak")
             class SaveNoteTask extends AsyncTask<Void, Void, Void> {
                 @Override
