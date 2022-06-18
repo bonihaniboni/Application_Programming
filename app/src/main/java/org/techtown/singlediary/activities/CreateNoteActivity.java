@@ -76,7 +76,6 @@ public class CreateNoteActivity extends AppCompatActivity {
         private String selectedImagePath;
         private Note alreadyAvailableNote;
 
-        int b;
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
