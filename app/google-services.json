@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "3116368427",
+    "project_id": "singlediary1-ea549",
+    "storage_bucket": "singlediary1-ea549.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:3116368427:android:e2c1ce2785c0aded41a06e",
+        "android_client_info": {
+          "package_name": "org.techtown.singlediary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "3116368427-brk5ndaslk000bnh8i40qqc6mdmpaljd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLGXKvAaDuRZVPIv_MqN4fA1MFDWKp8SE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "3116368427-brk5ndaslk000bnh8i40qqc6mdmpaljd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
