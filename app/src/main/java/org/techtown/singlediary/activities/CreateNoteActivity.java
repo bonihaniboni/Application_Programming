@@ -26,15 +26,19 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.common.base.MoreObjects;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
@@ -75,6 +79,8 @@ public class CreateNoteActivity extends AppCompatActivity {
         private String selectedImagePath;
         private Note alreadyAvailableNote;
 
+        private String[] names = {"보기1","보기2","보기3","보기4","보기5"};
+
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +102,7 @@ public class CreateNoteActivity extends AppCompatActivity {
             imageNote = findViewById(R.id.imageNote);
             textWebURL = findViewById(R.id.textWebURL);
             layoutWebURL = findViewById(R.id.layoutWebURL);
+
 
             viewSubtitleIndicator = findViewById(R.id.viewSubtitleIndicator);
 
@@ -145,7 +152,45 @@ public class CreateNoteActivity extends AppCompatActivity {
             initMiscellaneous();
             setSubtitleIndicatorColor();
 
+            // 스피너 관련 코드
+            Spinner spinner = findViewById(R.id.spinner);
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<>(
+                    this, android.R.layout.simple_spinner_item,names);
+            adapter.setDropDownViewResource(
+                    android.R.layout.simple_spinner_dropdown_item);
+            spinner.setAdapter(adapter);
+
+            spinner.setSelection(getIndex(spinner, alreadyAvailableNote.getSubtitle()));
+
+            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    ((TextView)adapterView.getChildAt(0)).setTextColor(Color.WHITE);
+                    inputNoteSubtitle.setText(names[i]);
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    inputNoteSubtitle.setText("");
+                }
+            });
+            // 스피너 코드 끝
+
         }
+
+    //스피너 관련 코드
+    private int getIndex(Spinner spinner, String myString){
+        for (int i=0;i<spinner.getCount();i++){
+            Toast.makeText(this,"들어감",Toast.LENGTH_SHORT).show();
+            if (spinner.getItemAtPosition(i).toString().equalsIgnoreCase(myString)){
+                return i;
+            }
+        }
+
+        return 0;
+    }
+    // 스피너 관련 끝
 
         private void setViewOrUpdateNote() {
             inputNoteTitle.setText(alreadyAvailableNote.getTitle());

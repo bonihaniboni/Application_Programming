@@ -1,5 +1,6 @@
 package org.techtown.singlediary.activities;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,6 +8,7 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,10 +18,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import org.techtown.singlediary.R;
 import org.techtown.singlediary.activities.CreateNoteActivity;
 import org.techtown.singlediary.adapters.NotesAdapter;
+import org.techtown.singlediary.board.BoardActivity;
 import org.techtown.singlediary.database.NotesDatabase;
 import org.techtown.singlediary.entities.Note;
 import org.techtown.singlediary.listeners.NotesListener;
@@ -43,6 +51,8 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
     private ImageButton imageAddWebLink;
 
+    public ImageView imageNote;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,12 +67,25 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             }
         });
 
+
+
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
         imageAddNoteMain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivityForResult(
                         new Intent(getApplicationContext(), CreateNoteActivity.class),
+                        REQUEST_CODE_ADD_NOTE
+                );
+            }
+        });
+
+        ImageView imageAddImage = findViewById(R.id.imageAddImage);
+        imageAddImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivityForResult(
+                        new Intent(getApplicationContext(), BoardActivity.class),
                         REQUEST_CODE_ADD_NOTE
                 );
             }
@@ -98,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
             }
         });
     }
+
+
 
     @Override
     public void onNoteClicked(Note note, int position) {

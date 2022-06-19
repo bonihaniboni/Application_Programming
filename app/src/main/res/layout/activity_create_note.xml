@@ -79,6 +79,7 @@
 
             <EditText
                 android:id="@+id/inputNoteSubtitle"
+                android:visibility="gone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_12sdp"
@@ -99,13 +100,27 @@
                 app:layout_constraintStart_toEndOf="@+id/viewSubtitleIndicator"
                 app:layout_constraintTop_toBottomOf="@id/textDateTime" />
 
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_12sdp"
+                android:textColor="@color/colorTextSubtitle"
+                android:textColorHint="@color/colorTextHint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/viewSubtitleIndicator"
+                app:layout_constraintTop_toBottomOf="@id/inputNoteSubtitle"/>
+
             <View
                 android:id="@+id/viewSubtitleIndicator"
                 android:layout_width="@dimen/_5sdp"
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:background="@drawable/background_subtitle_indicator"
-                app:layout_constraintBottom_toBottomOf="@id/inputNoteSubtitle"
+                app:layout_constraintBottom_toBottomOf="@id/spinner"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/inputNoteSubtitle" />
 
@@ -119,7 +134,7 @@
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/app_name"
                 android:visibility="gone"
-                app:layout_constraintTop_toBottomOf="@id/inputNoteSubtitle" />
+                app:layout_constraintTop_toBottomOf="@id/spinner" />
 
             <ImageView
                 android:id="@+id/imageRemoveImage"

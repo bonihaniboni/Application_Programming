@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".board.BoardActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".login.LoginActivaty"
             android:exported="false" />
         <activity
