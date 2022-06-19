@@ -99,7 +99,7 @@
             android:src="@drawable/ic_image"
             app:tint="@color/colorIcons" />
 
-        <ImageView
+        <ImageButton
             android:id="@+id/imageAddWebLink"
             android:layout_width="@dimen/_23sdp"
             android:layout_height="@dimen/_23sdp"

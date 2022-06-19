@@ -14,6 +14,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import org.techtown.singlediary.R;
@@ -22,6 +23,8 @@ import org.techtown.singlediary.adapters.NotesAdapter;
 import org.techtown.singlediary.database.NotesDatabase;
 import org.techtown.singlediary.entities.Note;
 import org.techtown.singlediary.listeners.NotesListener;
+import org.techtown.singlediary.login.RegisterActivity;
+import org.techtown.singlediary.login.StartActivaty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,10 +41,21 @@ public class MainActivity extends AppCompatActivity implements NotesListener {
 
     private int noteClickedPosition = -1;
 
+    private ImageButton imageAddWebLink;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        imageAddWebLink = findViewById(R.id.imageAddWebLink);
+        imageAddWebLink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, StartActivaty.class));
+                finish();
+            }
+        });
 
         ImageView imageAddNoteMain = findViewById(R.id.imageAddNoteMain);
         imageAddNoteMain.setOnClickListener(new View.OnClickListener() {

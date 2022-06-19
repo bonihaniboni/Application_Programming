@@ -3,6 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/LG/Desktop/Application_Programming/app/src/main/res/layout/activity_login.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/LG/Desktop/Application_Programming/app/src/main/res/layout/activity_login_activaty.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/LG/Desktop/Application_Programming/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/Users/LG/Desktop/Application_Programming/app/src/main/res/layout/activity_register.xml" value="0.25364583333333335" />
+        <entry key="..\:/Users/LG/Desktop/Application_Programming/app/src/main/res/layout/activity_start.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/LG/Desktop/SingleDiary/app/src/main/res/layout/activity_create_note.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/LG/Desktop/SingleDiary/app/src/main/res/layout/activity_main.xml" value="0.25364583333333335" />
         <entry key="..\:/Users/LG/Desktop/SingleDiary/app/src/main/res/layout/item_container_note.xml" value="0.25364583333333335" />

@@ -54,7 +54,6 @@ import java.util.Map;
 
 public class CreateNoteActivity extends AppCompatActivity {
 
-        private final FirebaseFirestore mStore = FirebaseFirestore.getInstance();
         private String id;
 
         private EditText inputNoteTitle, inputNoteSubtitle, inputNoteText;
@@ -198,29 +197,6 @@ public class CreateNoteActivity extends AppCompatActivity {
 
             }
 
-            Map<String, Object> post = new HashMap<>();
-            post.put("title", inputNoteTitle.getText().toString());
-            post.put("subtitle", inputNoteSubtitle.getText().toString());
-            post.put("noteText", inputNoteText.getText().toString());
-            post.put("time", textDateTime.getText().toString());
-            post.put("color", selectedNoteColor);
-            post.put("image", selectedImagePath);
-
-         /*  mStore.collection("note").add(post)
-                    .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                        @Override
-                        public void onSuccess(DocumentReference documentReference) {
-                            Toast.makeText(CreateNoteActivity.this,"Firebase Success", Toast.LENGTH_SHORT).show();
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(CreateNoteActivity.this,"Firebase Fail", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-
-*/
             // 파이어베이스 이미지 업로드ㅡ
             if(selectedImageUri != null) {
                 FirebaseStorage storage = FirebaseStorage.getInstance(); // 스토리지 인스턴스 만들고
